@@ -3,7 +3,7 @@ const { promisify } = require('util');
 const writeFile = promisify(fs.writeFile);
 const unlink = promisify(fs.unlink);
 
-const beep = () => console.log('\u0007');// Makes your Mac to beep...really...it does
+const beep = () => process.stdout.write('\x07');// Makes your Mac to beep...really...it does
 
 const delay = seconds => new Promise(resolves => {
     setTimeout(resolves, seconds * 1000);
