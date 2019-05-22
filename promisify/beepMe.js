@@ -22,8 +22,28 @@ const doStuffSequentially = () => Promise.resolve()
     .then(() => delay(3))
     .then(() => unlink('file.txt'))
     .then(beep)
-    .then(()=>'file.txt removed.')
+    .then(() => 'file.txt removed.')
     .then(console.log)
     .catch(console.error)//will throw the first error to the console
 
-doStuffSequentially();
+// Async Await 
+const doStuffSequentiallyAsync = async () => {
+    try {
+        console.log('Starting...');
+        await delay(1);
+        console.log('Waiting...');
+        await delay(2);
+        await writeFile('file.txt', 'Testing more complex promises');
+        beep();
+        console.log('file.txt created.');
+        await delay(3);
+        await unlink('file.txt');
+        beep();
+        console.log('file.txt removed.');
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//doStuffSequentially();
+doStuffSequentiallyAsync();
