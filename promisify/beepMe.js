@@ -48,8 +48,15 @@ const doStuffSequentiallyAsync = async () => {
 //doStuffSequentially();
 // doStuffSequentiallyAsync();
 
+//[PROMISE.ALL]
 Promise.all([
     delay(2),
     delay(5),
     delay(3),
-]).then(()=>console.log('All promises have been resolved.'))
+]).then(()=>console.log('All promises have been resolved.'));//this will log after all promises have resolved
+
+Promise.race([
+    delay(2),
+    delay(5),
+])
+.then(()=>console.log('Will console.log when any of the promises resolves'));
