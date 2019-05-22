@@ -46,4 +46,10 @@ const doStuffSequentiallyAsync = async () => {
 }
 
 //doStuffSequentially();
-doStuffSequentiallyAsync();
+// doStuffSequentiallyAsync();
+
+Promise.all([
+    delay(2),
+    delay(5),
+    delay(3),
+]).then(()=>console.log('All promises have been resolved.'))
